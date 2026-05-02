@@ -11,7 +11,7 @@ export default function Home() {
           </div>
         </div>
         <a
-          href="https://github.com"
+          href="https://github.com/Development-With-Dev/env_encrypter"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-white transition-colors group"
