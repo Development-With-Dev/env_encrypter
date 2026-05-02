@@ -1,8 +1,3 @@
-/**
- * SecureEnv API Client
- * Interfaces with the Express backend.
- */
-
 const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api').replace(/\/$/, '');
 
 export interface SecretMetadata {
@@ -28,7 +23,7 @@ export interface CreateSecretPayload {
   salt?: string;
   isPasswordProtected: boolean;
   maxViews: number | null;
-  expiresIn: number; // in seconds
+  expiresIn: number;
 }
 
 export interface CreateSecretResponse {
@@ -36,15 +31,10 @@ export interface CreateSecretResponse {
   expiresAt: string;
 }
 
-/**
- * Stores an encrypted secret on the server.
- */
 export async function createSecret(payload: CreateSecretPayload): Promise<CreateSecretResponse> {
   const response = await fetch(`${API_BASE_URL}/secrets`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
 
@@ -56,10 +46,6 @@ export async function createSecret(payload: CreateSecretPayload): Promise<Create
   return response.json();
 }
 
-/**
- * Retrieves an encrypted secret from the server.
- * This call increments the view count.
- */
 export async function getSecret(token: string): Promise<SecretResponse> {
   const response = await fetch(`${API_BASE_URL}/secrets/${token}`);
 
@@ -71,9 +57,6 @@ export async function getSecret(token: string): Promise<SecretResponse> {
   return response.json();
 }
 
-/**
- * Retrieves metadata for a secret without incrementing the view count.
- */
 export async function getSecretMetadata(token: string): Promise<SecretMetadata> {
   const response = await fetch(`${API_BASE_URL}/secrets/${token}/meta`);
 
@@ -85,9 +68,6 @@ export async function getSecretMetadata(token: string): Promise<SecretMetadata> 
   return response.json();
 }
 
-/**
- * Manually burns (deletes) a secret.
- */
 export async function deleteSecret(token: string): Promise<void> {
   const response = await fetch(`${API_BASE_URL}/secrets/${token}`, {
     method: 'DELETE',

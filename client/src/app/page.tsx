@@ -3,7 +3,6 @@ import EncryptForm from "@/components/EncryptForm";
 export default function Home() {
   return (
     <div className="h-full w-full flex flex-col overflow-hidden bg-black bg-grid">
-      {/* Top Protocol Header */}
       <header className="w-full border-b border-white/10 px-8 py-5 flex justify-between items-center shrink-0 z-10 bg-black">
         <div className="flex items-center gap-4">
           <div className="status-static" />
@@ -24,9 +23,7 @@ export default function Home() {
         </a>
       </header>
 
-      {/* Main Content Area */}
       <div className="flex-1 w-full flex flex-col lg:flex-row items-stretch overflow-hidden">
-        {/* Left Section: Context */}
         <div className="w-full lg:w-1/2 p-8 md:p-12 xl:p-20 flex flex-col justify-center space-y-10 border-b lg:border-b-0 lg:border-r border-zinc-900 bg-black/40 backdrop-blur-[2px]">
           <div className="space-y-6">
             <div className="h-px w-12 bg-white/10" />
@@ -52,7 +49,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right Section: Action */}
         <div className="flex-1 p-4 md:p-8 flex items-center justify-center bg-[#050506]/80 backdrop-blur-sm overflow-hidden">
           <div className="w-full max-w-xl h-full flex flex-col justify-center">
             <EncryptForm />
@@ -60,7 +56,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Bottom Protocol Footer */}
       <footer className="w-full border-t border-zinc-900 px-6 py-6 flex justify-between items-center shrink-0 bg-black/80 backdrop-blur-sm z-10">
         <div className="flex items-center gap-10">
           <p className="text-[9px] font-black uppercase tracking-[0.5em] text-zinc-800">VAULT_CORE_SYSTEM</p>

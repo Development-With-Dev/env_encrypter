@@ -1,10 +1,6 @@
 import { body, param, validationResult } from 'express-validator';
 import { Request, Response, NextFunction } from 'express';
 
-/**
- * Handle validation errors from express-validator.
- * Returns 400 with structured error messages.
- */
 export function handleValidationErrors(
   req: Request,
   res: Response,
@@ -24,17 +20,6 @@ export function handleValidationErrors(
   next();
 }
 
-/**
- * Validation rules for POST /api/secrets.
- *
- * SECURITY NOTES:
- * - encryptedData is capped at 68,000 chars (~50KB raw data after base64)
- *   to prevent storage abuse
- * - iv must be exactly 16 chars (12-byte IV base64-encoded)
- *   Actually 12 bytes → base64 = 16 chars, but can be up to 24 with padding
- * - expiresIn max is 7 days (604,800 seconds) to enforce data hygiene
- * - maxViews capped at 100 to prevent effectively-unlimited secrets
- */
 export const validateCreateSecret = [
   body('encryptedData')
     .isString()
@@ -70,10 +55,6 @@ export const validateCreateSecret = [
   handleValidationErrors,
 ];
 
-/**
- * Validation rules for route params containing access tokens.
- * Ensures the token matches the expected format (64 hex chars).
- */
 export const validateAccessToken = [
   param('token')
     .matches(/^[a-f0-9]{64}$/)

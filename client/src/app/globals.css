@@ -36,7 +36,6 @@
   }
 }
 
-/* Stylish Grid Background */
 .bg-grid {
   background-size: 40px 40px;
   background-image:
@@ -44,7 +43,6 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-/* Mechanical Button Style */
 .btn-action {
   background: #fafafa;
   color: #000000;
@@ -92,7 +90,6 @@
   color: #fafafa;
 }
 
-/* Status Indicator */
 .status-pulse {
   width: 6px;
   height: 6px;
